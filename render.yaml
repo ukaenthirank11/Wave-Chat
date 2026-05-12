@@ -1,0 +1,54 @@
+﻿services:
+  - type: web
+    name: wavechat
+    runtime: python
+    plan: starter
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn -w 1 --threads 100 -b 0.0.0.0:$PORT wsgi:app
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.13
+      - key: SECRET_KEY
+        generateValue: true
+      - key: SESSION_COOKIE_SECURE
+        value: "true"
+      - key: DEV_OTP_EXPOSE
+        value: "false"
+      - key: MAX_UPLOAD_SIZE_MB
+        value: "64"
+      - key: DATABASE_URL
+        value: sqlite:////opt/render/project/src/data/chat.db
+      - key: UPLOAD_FOLDER
+        value: /opt/render/project/src/data/uploads
+      - key: RTC_STUN_URLS
+        value: stun:stun.l.google.com:19302,stun:stun1.l.google.com:19302
+      - key: RTC_TURN_URLS
+        value: ""
+      - key: RTC_TURN_USERNAME
+        value: ""
+      - key: RTC_TURN_CREDENTIAL
+        sync: false
+      - key: RTC_ICE_TRANSPORT_POLICY
+        value: all
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: WAVEMIND_PROVIDER
+        value: gemini
+      - key: WAVEMIND_API_URL
+        value: "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
+      - key: WAVEMIND_MODEL
+        value: gemini-2.5-flash
+      - key: WAVEMIND_GOOGLE_SEARCH
+        value: "true"
+      - key: WAVEMIND_TIMEZONE
+        value: Asia/Kolkata
+      - key: WAVEMIND_TIMEOUT_SECONDS
+        value: "60"
+      - key: WAVEMIND_RETRY_ATTEMPTS
+        value: "4"
+    disk:
+      name: wavechat-data
+      mountPath: /opt/render/project/src/data
+      sizeGB: 1

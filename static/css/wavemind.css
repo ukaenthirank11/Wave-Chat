@@ -1,0 +1,776 @@
+.wavemind-fab {
+    position: fixed;
+    right: 22px;
+    bottom: 92px;
+    z-index: 70;
+    width: 68px;
+    height: 68px;
+    padding: 4px;
+    border: 0;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: 0 18px 42px rgba(122, 34, 50, 0.28);
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+}
+
+.wavemind-fab img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+}
+
+.wavemind-fab,
+.wavemind-panel {
+    display: none !important;
+}
+
+.chat-item.wavemind-chat-item .avatar-photo-only {
+    background: #ffffff;
+    box-shadow: inset 0 0 0 1px rgba(245, 29, 42, 0.18);
+}
+
+.chat-item.wavemind-chat-item .chat-item-title strong::after {
+    content: "AI";
+    display: inline-grid;
+    place-items: center;
+    min-width: 26px;
+    height: 18px;
+    margin-left: 8px;
+    padding: 0 7px;
+    border-radius: 999px;
+    background: rgba(245, 29, 42, 0.1);
+    color: #f51d2a;
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.wavemind-fab:focus-visible,
+.wavemind-close:focus-visible,
+.wavemind-send:focus-visible {
+    outline: 3px solid rgba(245, 29, 42, 0.32);
+    outline-offset: 3px;
+}
+
+.wavemind-panel {
+    position: fixed;
+    right: 18px;
+    bottom: 22px;
+    z-index: 90;
+    width: min(390px, calc(100vw - 24px));
+    height: min(680px, calc(100dvh - 36px));
+    border-radius: 22px;
+    background: #ffffff;
+    box-shadow: 0 24px 70px rgba(36, 17, 24, 0.3);
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    overflow: hidden;
+    border: 1px solid rgba(122, 34, 50, 0.12);
+}
+
+.wavemind-panel.hidden {
+    display: none;
+}
+
+.wavemind-header {
+    min-height: 76px;
+    padding: 14px 14px 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(135deg, #fff 0%, #fff5f5 100%);
+    border-bottom: 1px solid rgba(122, 34, 50, 0.1);
+}
+
+.wavemind-header-logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex: 0 0 auto;
+    background: #fff;
+    box-shadow: inset 0 0 0 1px rgba(245, 29, 42, 0.2);
+}
+
+.wavemind-title {
+    min-width: 0;
+    flex: 1;
+}
+
+.wavemind-title strong {
+    display: block;
+    color: #27161b;
+    font-size: 17px;
+    line-height: 1.2;
+}
+
+.wavemind-title span {
+    display: block;
+    margin-top: 3px;
+    color: #8e6a72;
+    font-size: 12px;
+}
+
+.wavemind-close {
+    width: 38px;
+    height: 38px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(245, 29, 42, 0.08);
+    color: #7a2232;
+    font-size: 25px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.wavemind-messages {
+    min-height: 0;
+    overflow-y: auto;
+    padding: 18px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: #fffafa;
+}
+
+.wavemind-message {
+    max-width: 86%;
+    padding: 11px 13px;
+    border-radius: 18px;
+    font-size: 14px;
+    line-height: 1.42;
+    white-space: pre-wrap;
+}
+
+.wavemind-rich-text {
+    white-space: pre-wrap;
+}
+
+.wavemind-sources {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    white-space: normal;
+}
+
+.wavemind-sources span {
+    flex-basis: 100%;
+    color: #8b5d68;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.wavemind-source-link {
+    display: inline-flex;
+    max-width: 100%;
+    padding: 5px 8px;
+    border: 1px solid rgba(245, 29, 42, 0.22);
+    border-radius: 8px;
+    color: #b90f1c;
+    background: #fff4f5;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.25;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+
+.wavemind-source-link:hover,
+.wavemind-source-link:focus-visible {
+    color: #8e0b16;
+    border-color: rgba(245, 29, 42, 0.45);
+    background: #ffe8eb;
+}
+
+.wavemind-message.assistant {
+    align-self: flex-start;
+    color: #27161b;
+    background: #ffffff;
+    border-top-left-radius: 6px;
+    box-shadow: 0 6px 18px rgba(122, 34, 50, 0.08);
+}
+
+.wavemind-message.user {
+    align-self: flex-end;
+    color: #ffffff;
+    background: #f51d2a;
+    border-top-right-radius: 6px;
+}
+
+.wavemind-compose {
+    padding: 12px;
+    display: grid;
+    grid-template-columns: 1fr 44px;
+    gap: 10px;
+    background: #ffffff;
+    border-top: 1px solid rgba(122, 34, 50, 0.1);
+}
+
+.wavemind-compose input {
+    min-width: 0;
+    height: 44px;
+    border: 1px solid rgba(122, 34, 50, 0.16);
+    border-radius: 999px;
+    padding: 0 15px;
+    color: #27161b;
+    background: #fffafa;
+    font-size: 14px;
+}
+
+.wavemind-send {
+    width: 44px;
+    height: 44px;
+    border: 0;
+    border-radius: 50%;
+    background: #f51d2a;
+    color: #ffffff;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+}
+
+.wavemind-send:disabled,
+.wavemind-compose input:disabled {
+    opacity: 0.62;
+    cursor: wait;
+}
+
+.wavemind-send svg {
+    width: 20px;
+    height: 20px;
+}
+
+.chat-shell.wavemind-chat-active #video-call-btn,
+.chat-shell.wavemind-chat-active #chat-info-btn,
+.chat-shell.wavemind-chat-active #attachment-btn,
+.chat-shell.wavemind-chat-active .chat-menu,
+.chat-shell.wavemind-chat-active .wavemind-fab {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+.chat-shell.wavemind-chat-active #conversation-meta-btn {
+    cursor: default;
+    pointer-events: none;
+}
+
+body.wavechat-preview-active .chat-shell.whatsapp-shell.whatsapp-web-frontend.wavemind-chat-active[data-preview-mode="mobile"] .conversation-actions {
+    display: flex !important;
+}
+
+.chat-shell.wavemind-chat-active #voice-call-btn {
+    display: inline-grid !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+}
+
+.wavemind-call-launch {
+    width: 100%;
+    border: 0;
+    background: transparent;
+    color: #101114;
+    text-align: left;
+    cursor: pointer;
+}
+
+.wavemind-call-launch-avatar {
+    width: 46px;
+    height: 46px;
+    flex: 0 0 46px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: inset 0 0 0 1px rgba(245, 29, 42, 0.18);
+    overflow: hidden;
+}
+
+.wavemind-call-launch-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.wavemind-call-launch-action {
+    width: 38px;
+    height: 38px;
+    margin-left: auto;
+    flex: 0 0 38px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #16a34a;
+    color: #ffffff;
+}
+
+.wavemind-call-launch-action svg {
+    width: 20px;
+    height: 20px;
+}
+
+.wavemind-call-overlay {
+    background: #050608;
+}
+
+.wavemind-active-call-card {
+    background: #050608 !important;
+    color: #ffffff;
+}
+
+.wavemind-active-call-card .call-modal-header {
+    background: #050608;
+    color: #ffffff;
+}
+
+.wavemind-active-call-card .call-modal-icon {
+    color: #ffffff;
+}
+
+.wavemind-active-call-card .wavemind-call-stage {
+    min-height: calc(100% - 58px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 36px 22px 40px;
+    background: #050608;
+}
+
+.wavemind-active-call-card .wavemind-call-meta {
+    display: grid;
+    justify-items: center;
+    gap: 12px;
+    margin-top: 26px;
+}
+
+.wavemind-active-call-card .wavemind-call-avatar {
+    width: 116px;
+    height: 116px;
+    border-radius: 50%;
+    padding: 7px;
+    background: #ffffff;
+    color: transparent;
+    box-shadow: 0 18px 40px rgba(245, 29, 42, 0.24);
+}
+
+.wavemind-active-call-card .wavemind-call-avatar.listening,
+.wavemind-active-call-card .wavemind-call-avatar.speaking {
+    box-shadow:
+        0 0 0 8px rgba(245, 29, 42, 0.16),
+        0 20px 44px rgba(245, 29, 42, 0.28);
+}
+
+.wavemind-active-call-card .wavemind-call-avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+}
+
+.wavemind-active-call-card .contact-profile-name {
+    color: #ffffff;
+    font-size: 1.28rem;
+    font-weight: 700;
+}
+
+.wavemind-active-call-card .contact-profile-phone {
+    color: rgba(255, 255, 255, 0.68);
+    text-align: center;
+}
+
+.wavemind-active-call-card .wavemind-call-duration {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 13px;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0;
+}
+
+.wavemind-active-call-card .wavemind-call-controls {
+    width: 100%;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    background: transparent;
+}
+
+.wavemind-active-call-card .wavemind-call-control,
+.wavemind-active-call-card .wavemind-call-end {
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    border: 0;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+}
+
+.wavemind-active-call-card .wavemind-call-control {
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+}
+
+.wavemind-active-call-card .wavemind-call-control.active {
+    background: #ffffff;
+    color: #f51d2a;
+}
+
+.wavemind-active-call-card .wavemind-call-control:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.wavemind-active-call-card .call-action-icon {
+    display: grid;
+    place-items: center;
+}
+
+.wavemind-active-call-card .call-action-icon svg {
+    width: 28px;
+    height: 28px;
+}
+
+.wavemind-active-call-card .call-action-label {
+    margin-top: 6px;
+    color: #ffffff;
+    font-size: 12px;
+    line-height: 1;
+}
+
+body.wavechat-preview-active .call-modal-root .wavemind-active-call-card .wavemind-call-avatar {
+    width: 116px;
+    height: 116px;
+    border-radius: 50%;
+    padding: 7px;
+    background: #ffffff;
+    color: transparent;
+    box-shadow: 0 18px 40px rgba(245, 29, 42, 0.24);
+}
+
+body.wavechat-preview-active .call-modal-root .wavemind-active-call-card .wavemind-call-avatar.listening,
+body.wavechat-preview-active .call-modal-root .wavemind-active-call-card .wavemind-call-avatar.speaking {
+    box-shadow:
+        0 0 0 8px rgba(245, 29, 42, 0.16),
+        0 20px 44px rgba(245, 29, 42, 0.28);
+}
+
+body.wavechat-preview-active .call-modal-root .wavemind-active-call-card .wavemind-call-avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+}
+
+body.wavechat-preview-active .call-modal-root .wavemind-active-call-card .wavemind-call-duration {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 13px;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0;
+}
+
+body.wavechat-preview-active .call-modal-root .wavemind-active-call-card .wavemind-call-controls {
+    gap: 28px;
+    background: transparent;
+}
+
+body.wavechat-preview-active .call-modal-root .wavemind-active-call-card .wavemind-call-control {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+body.wavechat-preview-active .call-modal-root .wavemind-active-call-card .wavemind-call-control.active {
+    background: #ffffff;
+    color: #f51d2a;
+}
+
+.wavemind-call-card {
+    width: min(430px, calc(100vw - 28px));
+    height: min(760px, calc(100dvh - 28px));
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 34px;
+    background: #fffafa;
+    color: #27161b;
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: auto auto minmax(0, 1fr) auto auto;
+    box-shadow: 0 26px 80px rgba(21, 4, 10, 0.38);
+}
+
+.wavemind-call-header {
+    padding: 16px;
+    background: #ffffff;
+    border-bottom: 1px solid rgba(122, 34, 50, 0.08);
+}
+
+.wavemind-call-header > div {
+    min-width: 0;
+    flex: 1;
+}
+
+.wavemind-call-header h2 {
+    margin: 0;
+    color: #27161b;
+    font-size: 17px;
+    line-height: 1.2;
+}
+
+.wavemind-call-header span {
+    display: block;
+    margin-top: 2px;
+    color: #8e6a72;
+    font-size: 12px;
+}
+
+.wavemind-call-header .call-modal-icon {
+    background: rgba(245, 29, 42, 0.08);
+    color: #7a2232;
+}
+
+.wavemind-call-mini-logo {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #ffffff;
+    box-shadow: inset 0 0 0 1px rgba(245, 29, 42, 0.18);
+}
+
+.wavemind-call-stage {
+    padding: 22px 18px 18px;
+    display: grid;
+    place-items: center;
+    gap: 8px;
+    text-align: center;
+    background:
+        linear-gradient(180deg, #ffffff 0%, #fff4f5 100%);
+}
+
+.wavemind-call-stage strong {
+    color: #27161b;
+    font-size: 24px;
+    line-height: 1.1;
+}
+
+.wavemind-call-stage span {
+    color: #8e6a72;
+    font-size: 13px;
+}
+
+.wavemind-call-orb {
+    position: relative;
+    width: 112px;
+    height: 112px;
+    border-radius: 50%;
+    padding: 7px;
+    background: #ffffff;
+    box-shadow: 0 18px 42px rgba(245, 29, 42, 0.22);
+}
+
+.wavemind-call-orb::before {
+    content: "";
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    border: 2px solid rgba(245, 29, 42, 0.16);
+    transform: scale(0.92);
+    opacity: 0;
+}
+
+.wavemind-call-orb.listening::before,
+.wavemind-call-orb.speaking::before {
+    animation: wavemindPulse 1.25s ease-out infinite;
+    opacity: 1;
+}
+
+.wavemind-call-orb img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+}
+
+.wavemind-call-transcript {
+    min-height: 0;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: #fffafa;
+}
+
+.wavemind-call-line {
+    max-width: 88%;
+    display: grid;
+    gap: 4px;
+}
+
+.wavemind-call-line span {
+    color: #9a7078;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.wavemind-call-line p {
+    margin: 0;
+    padding: 10px 12px;
+    border-radius: 16px;
+    white-space: pre-wrap;
+    font-size: 14px;
+    line-height: 1.42;
+}
+
+.wavemind-call-line.assistant {
+    align-self: flex-start;
+}
+
+.wavemind-call-line.assistant p {
+    background: #ffffff;
+    color: #27161b;
+    border-top-left-radius: 6px;
+    box-shadow: 0 6px 18px rgba(122, 34, 50, 0.08);
+}
+
+.wavemind-call-line.user {
+    align-self: flex-end;
+}
+
+.wavemind-call-line.user span {
+    text-align: right;
+}
+
+.wavemind-call-line.user p {
+    background: #f51d2a;
+    color: #ffffff;
+    border-top-right-radius: 6px;
+}
+
+.wavemind-call-compose {
+    padding: 12px 14px 8px;
+    display: grid;
+    grid-template-columns: 1fr 42px;
+    gap: 9px;
+    background: #ffffff;
+    border-top: 1px solid rgba(122, 34, 50, 0.08);
+}
+
+.wavemind-call-compose input {
+    min-width: 0;
+    height: 42px;
+    border: 1px solid rgba(122, 34, 50, 0.14);
+    border-radius: 999px;
+    padding: 0 14px;
+    background: #fffafa;
+    color: #27161b;
+    font-size: 14px;
+}
+
+.wavemind-call-send,
+.wavemind-call-control,
+.wavemind-call-end {
+    border: 0;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+}
+
+.wavemind-call-send {
+    width: 42px;
+    height: 42px;
+    background: #f51d2a;
+    color: #ffffff;
+}
+
+.wavemind-call-send svg {
+    width: 19px;
+    height: 19px;
+}
+
+.wavemind-call-controls {
+    padding: 8px 18px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    background: #ffffff;
+}
+
+.wavemind-call-control {
+    width: 58px;
+    height: 58px;
+    background: rgba(245, 29, 42, 0.09);
+    color: #f51d2a;
+}
+
+.wavemind-call-control.active {
+    background: #f51d2a;
+    color: #ffffff;
+    box-shadow: 0 16px 30px rgba(245, 29, 42, 0.28);
+}
+
+.wavemind-call-end {
+    width: 66px;
+    height: 66px;
+    background: #f51d2a;
+    color: #ffffff;
+    box-shadow: 0 16px 30px rgba(245, 29, 42, 0.32);
+}
+
+.wavemind-call-control svg,
+.wavemind-call-end svg {
+    width: 26px;
+    height: 26px;
+}
+
+.wavemind-call-compose input:disabled,
+.wavemind-call-send:disabled,
+.wavemind-call-control:disabled {
+    opacity: 0.62;
+    cursor: wait;
+}
+
+@keyframes wavemindPulse {
+    0% {
+        opacity: 0.72;
+        transform: scale(0.92);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.22);
+    }
+}
+
+@media (max-width: 760px) {
+    .wavemind-fab {
+        right: 18px;
+        bottom: 86px;
+        width: 62px;
+        height: 62px;
+    }
+
+    .wavemind-panel {
+        inset: 0;
+        width: 100vw;
+        height: 100dvh;
+        border-radius: 0;
+        border: 0;
+    }
+
+    .wavemind-call-card {
+        width: 100vw;
+        height: 100dvh;
+        border-radius: 0;
+        border: 0;
+    }
+}
